@@ -11,16 +11,17 @@ class ProdukController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-    }
+        {
+            $produk = Produk::all();
+            return view('produk.index', compact('produk'));
+        }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('produk.create');
     }
 
     /**
@@ -28,7 +29,8 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Produk::create($request->all());
+        return redirect()->route('produk.index')->with('pesan','Berhasil Di Tambah kan');
     }
 
     /**
@@ -36,7 +38,7 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        //
+        return view('produk.show', compact('produk'));
     }
 
     /**
@@ -44,7 +46,7 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
-        //
+        return view('produk.edit', compact('produk'));
     }
 
     /**
@@ -52,7 +54,9 @@ class ProdukController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
-        //
+         $produk->update($request->all());
+
+         return redirect()->route('produk.index')->with('pesan', 'berhasil di update');
     }
 
     /**
@@ -60,6 +64,8 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        //
+       $produk->delete();
+
+       return redirect()->route('produk.index')->with('pesan','produk berhasil di hapus');
     }
 }

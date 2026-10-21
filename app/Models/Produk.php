@@ -10,9 +10,5 @@ class Produk extends Model
     
         protected $fillable = ['kode_produk','nama_produk','kategori','merek','harga','stok','keterangan'];
 
-    #[Override]
-    public function fillable(array $fillable)
-    {
-    }
 }
 
