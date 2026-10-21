@@ -29,7 +29,8 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        
+        Produk::create($request->all());
+        return redirect()->route('produk.index')->with('pesan','berhasil tambah data');
     } 
 
     /**
