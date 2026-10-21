@@ -31,7 +31,7 @@ class ProdukController extends Controller
     {
         Produk::create($request->all());
         return redirect()->route('produk.index')->with('pesan','Berhasil Di Tambah kan');
-    }
+    } 
 
     /**
      * Display the specified resource.
