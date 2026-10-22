@@ -22,7 +22,15 @@
         <td>{{ $produks->merek}}</td>
         <td>{{ $produks->harga }}</td>
         <td>{{ $produks->stok }}</td>
-        <td><a href="{{ route('produk.edit',$produks->id) }}">edit</a></td>
+
+        <td>
+            <a href="{{ route('produk.edit',$produks->id) }}">edit</a>
+            <form action="{{ route('produk.destroy',$produks->id) }}" method="post" style="display:inline;">
+                @csrf
+                @method('delete')
+                <button type="submit" onclick="confirm('apakahh yakin')">hapus</button>
+            </form>
+        </td>
         
     </tr>
     @endforeach
