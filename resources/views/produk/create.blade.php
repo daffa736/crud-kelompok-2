@@ -12,7 +12,8 @@
         </div>
 
         <div class="card-body p-4">
-            <form>
+            <form action="{{ route('produk.store') }}" method="post">
+                @csrf
                 
                 <div class="mb-3">
                     <label for="kode_produk" class="form-label">
@@ -21,7 +22,7 @@
                     <input
                         type="text"
                         class="form-control"
-                        id="kode_produk"
+                        name="kode_produk"
                         placeholder="Contoh: PRD001"
                         value="PRD001">
                     <div class="form-text">
@@ -37,7 +38,7 @@
                     <input
                         type="text"
                         class="form-control"
-                        id="nama_produk"
+                        name="nama_produk"
                         placeholder="Masukkan nama produk"
                         >
                 </div>
@@ -47,16 +48,27 @@
                     <label for="kategori" class="form-label">
                         Kategori <span class="text-danger">*</span>
                     </label>
-                    <select class="form-select" id="kategori">
+                    <select class="form-select" name="kategori">
                         <option value="">-- Pilih Kategori --</option>
-                        <option value="atk" selected>Alat Tulis</option>
-                        <option value="makanan">Makanan</option>
-                        <option value="minuman">Minuman</option>
+                        <option value="atk">Alat Tulis</option>
                         <option value="elektronik">Elektronik</option>
                     </select>
                 </div>
 
-               
+                <div class="mb-3">
+                    <label for="nama_produk" class="form-label">
+                        Merek<span class="text-danger">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="merek"
+                        placeholder="Masukkan nama produk"
+                        >
+                </div>
+
+
+                
                 <div class="mb-3">
                     <label for="harga" class="form-label">
                         Harga Produk <span class="text-danger">*</span>
@@ -66,7 +78,7 @@
                         <input
                             type="number"
                             class="form-control"
-                            id="harga"
+                            name="harga"
                             placeholder="Masukkan harga"
                             >
                     </div>
@@ -80,7 +92,7 @@
                     <input
                         type="number"
                         class="form-control"
-                        id="stok"
+                        name="stok"
                         placeholder="Masukkan jumlah stok"
                        >
                 </div>
@@ -93,7 +105,7 @@
                     </label>
                     <textarea
                         class="form-control"
-                        id="deskripsi"
+                        name="deskripsi"
                         rows="4"
                         placeholder="Jelaskan informasi atau spesifikasi produk..."></textarea>
                 </div>
@@ -103,8 +115,8 @@
                     <a href="{{ route('produk.index') }}" class="btn btn-success bi bi-arrow-bar-left ">
                         Kembali
                     </a>
-                    <button type="button" class="btn btn-primary">
-                        Simpan Perubahan
+                    <button type="submit" class="btn btn-primary">
+                        Simpan Produk
                     </button>
                 </div>
             </form>

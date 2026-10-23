@@ -29,7 +29,7 @@
         </thead>
 
         <tbody>
-            @foreach ($produk as $item)
+            @forelse ($produk as $item)
                 <tr>
                     <td>{{ $item->kode_produk }}</td>
                     <td>{{ $item->nama_produk }}</td>
@@ -52,15 +52,21 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit"
+                                <button type="submit" onclick="return confirm('apakah ada yakin menghapus produk {{ $item->nama_produk }}')"
                                         class="btn btn-danger btn-sm bi bi-trash">
                                     Hapus
                                 </button>
                             </form>
                         </div>
                     </td>
+
+                    @empty
+                    <td colspan="8" class="text-center text-muted text-2xl bi bi-dropbox">
+                        Produk kosong
+                    </td>
+
                 </tr>
-            @endforeach
+            @endforelse
         </tbody>
     </table>
 </div>
