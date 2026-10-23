@@ -12,7 +12,7 @@ class ProdukController extends Controller
      */
     public function index()
         {
-            $produk = Produk::all();
+            $produk = Produk::latest()->paginate(10);
             return view('produk.index', compact('produk'));
         }
 
@@ -30,7 +30,7 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         Produk::create($request->all());
-        return redirect()->route('produk.index')->with('pesan','berhasil tambah data');
+        return redirect()->route('produk.index')->with('pesan','berhasil menambahkan data produk');
     } 
 
     /**
@@ -57,7 +57,7 @@ class ProdukController extends Controller
     {
       $produk->update($request->all());
 
-      return redirect()->route('produk.index')->with('pesan','berhasil mengedit data');
+      return redirect()->route('produk.index')->with('pesan','berhasil mengubah data produk');
     }
 
     /**
@@ -67,6 +67,6 @@ class ProdukController extends Controller
     {
        $produk->delete();
        
-        return redirect()->route('produk.index')->with('pesan','data berhasil di hapus');
+        return redirect()->route('produk.index')->with('pesan','data produk berhasil di hapus');
     }
 }
