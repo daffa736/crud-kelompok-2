@@ -1,7 +1,9 @@
-<h2>halaman index</h2>
-@if (session('pesan'))
-<h2>{{ session('pesan') }}</h2>
-@endif
+
+@session('pesan')
+<p>{{ session('pesan') }}</p>
+@endsession
+
+<button type="submit"><a href="{{ route('produk.create') }}">tambah data</a></button>
 <table border="3">
     <tr>
         <th>Kode Produk</th>
